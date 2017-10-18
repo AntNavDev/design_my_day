@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Grid;
+use App\Month;
 use Illuminate\Http\Request;
 
 class CalendarController extends Controller
@@ -14,8 +15,11 @@ class CalendarController extends Controller
      */
     public function index()
     {
-        $my_calendar = new Grid( 5, 7 );
-        return view( 'calendar.index', compact( 'my_calendar' ) );
+        $increment = 0;
+        $viewed_month = new Month( date( 'm' ), date( 'Y' ) );
+        $my_calendar = new Grid( 5, 7, $viewed_month->getFirstDay(), $viewed_month->getDaysAmount() );
+
+        return view( 'calendar.index', compact( 'my_calendar', 'viewed_month', 'increment' ) );
     }
 
     /**
@@ -82,5 +86,29 @@ class CalendarController extends Controller
     public function destroy(Grid $grid)
     {
         //
+    }
+
+    public function newcal( $increment = 0 )
+    {
+        $month = ( date( 'm' ) + $increment );
+        $year = date( 'Y' );
+        if( $month < 10 )
+        {
+            $month = '0' . $month;
+        }
+        if( $month < 1 )
+        {
+            $year -= 1;
+            $month = '12';
+        }
+        if( $month > 12 )
+        {
+            $year += 1;
+            $month = '01';
+        }
+        $viewed_month = new Month( $month, $year );
+        $my_calendar = new Grid( 5, 7, $viewed_month->getFirstDay(), $viewed_month->getDaysAmount() );
+
+        return view( 'calendar.index', compact( 'my_calendar', 'viewed_month', 'increment' ) );
     }
 }

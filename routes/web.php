@@ -17,6 +17,8 @@ Route::get('/', function () {
     return view('home.index');
 })->name( 'home' );
 
+Route::get( '/calendar/{calendar}', 'CalendarController@newcal' )->name( 'newcal' );
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

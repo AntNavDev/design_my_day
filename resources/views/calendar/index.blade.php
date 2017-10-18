@@ -9,6 +9,14 @@
         Welcome to {{ config( 'app.name' ) }}!
     </div>
     <div id="calendar_display">
+        <div class="row">
+            <div class="col-md-offset-2 col-md-8 title">
+                <a href="{{ route( 'newcal', ( $increment - 1 ) ) }}" class="btn btn-primary prev_month_button">Previous Month</a>
+                {{ $viewed_month->getMonthAsText() }}, {{ $viewed_month->getYear() }}
+                <a href="{{ route( 'newcal', ( $increment + 1 ) ) }}" class="btn btn-primary next_month_button">Next Month</a>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
         {{ $my_calendar->displayGrid() }}
     </div>
 @endsection
