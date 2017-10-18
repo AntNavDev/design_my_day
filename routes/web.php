@@ -11,6 +11,8 @@
 |
 */
 
+Route::resource( 'calendar', 'CalendarController' );
+
 Route::get('/', function () {
     return view('home.index');
 })->name( 'home' );
