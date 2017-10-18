@@ -2,6 +2,7 @@
 <html lang="{{ config( 'app.locale' ) }}">
 <!-- Bootstrap -->
 <link href="{{ asset( 'css/app.css' ) }}" rel="stylesheet">
+@yield( 'css' )
 <head>
     <title>{{ config( 'app.name' ) }}</title>
 </head>

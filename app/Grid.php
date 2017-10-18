@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Day;
 use Illuminate\Database\Eloquent\Model;
 
 class Grid extends Model
@@ -35,19 +36,30 @@ class Grid extends Model
         return $this->g_width;
     }
 
-    public function display()
+    public function getWeekday()
     {
+        return array(
+            'Sunday',
+            'Monday',
+            'Tuesday',
+            'Wednesday',
+            'Thursday',
+            'Friday',
+            'Saturday'
+        );
+    }
+
+    public function displayGrid()
+    {
+        $counter = 1;
         for( $outer_index = 0; $outer_index < $this->g_length; $outer_index++ )
         {
             echo '<div class="row"><div class="col-md-2"></div>';
             for( $inner_index = 0; $inner_index < $this->g_width; $inner_index++ )
             {
-                echo '<div class="col-md-1">';
-                echo '-----------' . '<br>';
-                echo '||||||||||||||||||||' . '<br>';
-                echo '||||||||||||||||||||' . '<br>';
-                echo '-----------' . '<br>';
-                echo '</div>';
+                $model = new Day( $this->getWeekday()[ $inner_index ], $counter );
+                $model->displayDay();
+                $counter += 1;
             }
             echo '<div class="col-md-3"></div></div>';
         }
