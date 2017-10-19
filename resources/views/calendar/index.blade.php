@@ -17,7 +17,7 @@
             </div>
             <div class="col-md-2"></div>
         </div>
-        {{ $my_calendar->displayGrid() }}
+        {{ $my_calendar->displayGrid( $viewed_month->getMonth(), $viewed_month->getYear() ) }}
     </div>
 @endsection
 

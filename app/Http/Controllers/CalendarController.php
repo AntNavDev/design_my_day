@@ -95,14 +95,6 @@ class CalendarController extends Controller
 
     public function changeMonth( $increment = 1, $year = 0 )
     {
-        // $year = date( 'Y' );
-        // $increment = $increment % 12;
-        // if( $increment == 0 )
-        // {
-        //     $increment = 12;
-        // }
-
-        
         if( $increment < 1 )
         {
             $year -= 1;
@@ -113,6 +105,7 @@ class CalendarController extends Controller
             $year += 1;
             $increment = 1;
         }
+        
         $current_month = ( 0 + $increment );
         if( $current_month < 10 )
         {

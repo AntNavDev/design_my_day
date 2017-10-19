@@ -73,7 +73,7 @@ class Grid extends Model
         );
     }
 
-    public function displayGrid()
+    public function displayGrid( $displayed_month, $displayed_year )
     {
         $day_of_month = 1;
         $start_display = false;
@@ -90,7 +90,20 @@ class Grid extends Model
                 }
                 if( $day_of_month <= $this->getSize() && $start_display )
                 {
-                    $day->displayDay();
+                    $displayed_fulldate = ( $day_of_month . $displayed_month . $displayed_year );
+
+                    $classes = [];
+// dump(( $day_of_month . $displayed_month ));
+                    if( array_key_exists( ( $day_of_month . $displayed_month ), $day->daysOfSignificance() ) )
+                    {
+                        $day->setMessage( $day->daysOfSignificance()[ ( $day_of_month . $displayed_month ) ] );
+                    }
+                    if( $displayed_fulldate == date( 'jmY' ) )
+                    {
+                        $classes[] = 'today';
+                        $day->setMessage( 'Today' );
+                    }
+                    $day->displayDay( $classes );
                     $day_of_month += 1;
                 }
                 else
