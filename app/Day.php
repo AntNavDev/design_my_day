@@ -50,9 +50,14 @@ class Day extends Model
     public function daysOfSignificance()
     {
         return array(
-            '2512' => 'Christmas',
+            '101'  => 'New Year\'s Day',
+            '1402' => 'Valentine\'s Day',
+            '1703' => 'Saint Patrick\'s Day',
+            '104'  => 'April Fools Day',
+            '407'  => 'Independence Day',
+            '3110' => 'Halloween',
             '2311' => 'Thanksgiving',
-            '101'   => 'New Year\'s Day'
+            '2512' => 'Christmas'
         );
     }
 

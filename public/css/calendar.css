@@ -1,0 +1,28 @@
+.day {
+    height: 150px;
+    width: 150px;
+    border: 1px solid #000000;
+    margin: 10px;
+}
+.hide_day {
+    height: 150px;
+    width: 150px;
+    border: 0px solid #000000;
+    margin: 10px;   
+}
+.today {
+    background-color: #FFFD96;
+}
+.day_message {
+    font-weight: bold;
+}
+.title {
+    font-size: 28px;
+    text-align: center;
+}
+.prev_month_button {
+    
+}
+.next_month_button {
+    
+}
