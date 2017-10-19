@@ -11,9 +11,9 @@
     <div id="calendar_display">
         <div class="row">
             <div class="col-md-offset-2 col-md-8 title">
-                <a href="{{ route( 'changeMonth', [ ( $increment - 1 ), $viewed_month->getYear() ] ) }}" class="btn btn-primary prev_month_button">Previous Month</a>
+                <a href="{{ route( 'changeMonth', [ ( $increment - 1 ), $viewed_month->getYear() ] ) }}" class="btn btn-primary">Previous Month</a>
                 {{ $viewed_month->getMonthAsText() }}, {{ $viewed_month->getYear() }}
-                <a href="{{ route( 'changeMonth', [ ( $increment + 1 ), $viewed_month->getYear() ] ) }}" class="btn btn-primary next_month_button">Next Month</a>
+                <a href="{{ route( 'changeMonth', [ ( $increment + 1 ), $viewed_month->getYear() ] ) }}" class="btn btn-primary">Next Month</a>
             </div>
             <div class="col-md-2"></div>
         </div>
@@ -22,9 +22,5 @@
 @endsection
 
 @section( 'footer' )
-    <script>
-        jQuery( document ).ready( function() {
-
-        } );
-    </script>
+    <script type="text/javascript" src="{{ URL::asset( 'js/calendar/calendar.js' ) }}"></script>
 @endsection

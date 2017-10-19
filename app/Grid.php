@@ -77,6 +77,7 @@ class Grid extends Model
     {
         $day_of_month = 1;
         $start_display = false;
+        $month_size = $this->getSize();
 
         for( $outer_index = 0; $outer_index < $this->getLength(); $outer_index++ )
         {
@@ -88,12 +89,13 @@ class Grid extends Model
                 {
                     $start_display = true;
                 }
-                if( $day_of_month <= $this->getSize() && $start_display )
+                
+                if( ( $day_of_month <= $month_size ) && $start_display )
                 {
                     $displayed_fulldate = ( $day_of_month . $displayed_month . $displayed_year );
 
                     $classes = [];
-// dump(( $day_of_month . $displayed_month ));
+
                     if( array_key_exists( ( $day_of_month . $displayed_month ), $day->daysOfSignificance() ) )
                     {
                         $day->setMessage( $day->daysOfSignificance()[ ( $day_of_month . $displayed_month ) ] );
