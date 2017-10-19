@@ -12,6 +12,7 @@
 */
 
 Route::resource( 'calendar', 'CalendarController' );
+Route::resource( 'task', 'TaskController' );
 
 Route::get('/', function () {
     return view('home.index');

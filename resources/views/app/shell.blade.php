@@ -15,10 +15,14 @@
         <div id="main_content" class="col-md-8">
             @yield( 'content' )
             @include( 'app.include' )
-            @yield( 'footer' )
         </div>
 
-        <div class="col-md-2"></div>
+        <div class="col-md-2">
+            @auth
+                @include( 'app.sidebars.info-bar' )
+            @endauth
+        </div>
+        @yield( 'footer' )
     </div>
 
 </body>
