@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Grid;
 use App\Month;
+use App\Task;
 use Illuminate\Http\Request;
 
 class CalendarController extends Controller

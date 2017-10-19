@@ -17,6 +17,7 @@ class CreateTasksTable extends Migration
             $table->increments('id');
             $table->integer( 'user_id' )->references( 'id' )->on( 'users' );
             $table->string( 'description' );
+            $table->string( 'scheduled_date' );
             $table->timestamps();
         });
     }

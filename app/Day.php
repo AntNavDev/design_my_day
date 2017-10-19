@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Task;
 use Illuminate\Database\Eloquent\Model;
 
 class Day extends Model
@@ -61,7 +62,7 @@ class Day extends Model
         );
     }
 
-    public function displayDay( $classes = [] )
+    public function displayDay( $classes = [], $fulldate = '' )
     {
         $classes_for_day = 'day col-md-1';
         if( isset( $classes ) )
@@ -71,11 +72,20 @@ class Day extends Model
                 $classes_for_day = $classes_for_day . ' ' . $class;
             } 
         }
+
+        $tasks = Task::where( 'scheduled_date', $fulldate )->pluck( 'description' );
         
         echo '<div class="' . $classes_for_day . '">';
+        echo '<input type="hidden" name="my_date" value="' . $fulldate . '">';
         echo $this->getNumber() . '<br>';
         echo $this->getName() . '<br>';
         echo '<span class="day_message">' . $this->getMessage() . '</span><br>';
+        echo '<ul name="task_list">';
+        foreach( $tasks as $task )
+        {
+            echo '<li>' . $task . '</li>';
+        }
+        echo '</ul>';
         echo '</div>';
     }
 

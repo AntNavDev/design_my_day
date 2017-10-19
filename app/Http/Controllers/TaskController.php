@@ -35,7 +35,15 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $new_task = Task::create([
+            'user_id' => $request[ 'user_id' ],
+            'description' => $request[ 'task_description' ],
+            'scheduled_date' => $request[ 'my_date' ]
+        ]);
+
+        $new_task->save();
+
+        return redirect()->back();
     }
 
     /**

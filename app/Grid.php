@@ -105,7 +105,7 @@ class Grid extends Model
                         $classes[] = 'today';
                         $day->setMessage( 'Today' );
                     }
-                    $day->displayDay( $classes );
+                    $day->displayDay( $classes, $displayed_fulldate );
                     $day_of_month += 1;
                 }
                 else
