@@ -15,9 +15,14 @@ class CalendarController extends Controller
      */
     public function index()
     {
-        $increment = 0;
-        $viewed_month = new Month( date( 'm' ), date( 'Y' ) );
-        $my_calendar = new Grid( 5, 7, $viewed_month->getFirstDay(), $viewed_month->getDaysAmount() );
+        $increment = date( 'm' );
+        $current_month = ( 0 + date( 'm' ) );
+        if( $current_month < 10 )
+        {
+            $current_month = '0' . $current_month;
+        }
+        $viewed_month = new Month( $current_month, date( 'Y' ) );
+        $my_calendar = new Grid( 6, 7, $viewed_month->getFirstDay(), $viewed_month->getDaysAmount() );
 
         return view( 'calendar.index', compact( 'my_calendar', 'viewed_month', 'increment' ) );
     }
@@ -88,26 +93,34 @@ class CalendarController extends Controller
         //
     }
 
-    public function newcal( $increment = 0 )
+    public function changeMonth( $increment = 1, $year = 0 )
     {
-        $month = ( date( 'm' ) + $increment );
-        $year = date( 'Y' );
-        if( $month < 10 )
-        {
-            $month = '0' . $month;
-        }
-        if( $month < 1 )
+        // $year = date( 'Y' );
+        // $increment = $increment % 12;
+        // if( $increment == 0 )
+        // {
+        //     $increment = 12;
+        // }
+
+        
+        if( $increment < 1 )
         {
             $year -= 1;
-            $month = '12';
+            $increment = 12;
         }
-        if( $month > 12 )
+        if( $increment > 12 )
         {
             $year += 1;
-            $month = '01';
+            $increment = 1;
         }
-        $viewed_month = new Month( $month, $year );
-        $my_calendar = new Grid( 5, 7, $viewed_month->getFirstDay(), $viewed_month->getDaysAmount() );
+        $current_month = ( 0 + $increment );
+        if( $current_month < 10 )
+        {
+            $current_month = '0' . $current_month;
+        }
+
+        $viewed_month = new Month( $current_month, $year );
+        $my_calendar = new Grid( 6, 7, $viewed_month->getFirstDay(), $viewed_month->getDaysAmount() );
 
         return view( 'calendar.index', compact( 'my_calendar', 'viewed_month', 'increment' ) );
     }

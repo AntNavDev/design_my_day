@@ -83,19 +83,19 @@ class Grid extends Model
             echo '<div class="row"><div class="col-md-2"></div>';
             for( $inner_index = 0; $inner_index < $this->getWidth(); $inner_index++ )
             {
+                $day = new Day( $this->getWeekday()[ $inner_index ], $day_of_month );
                 if( $inner_index == $this->getStartPoint() )
                 {
                     $start_display = true;
                 }
                 if( $day_of_month <= $this->getSize() && $start_display )
                 {
-                    $model = new Day( $this->getWeekday()[ $inner_index ], $day_of_month );
-                    $model->displayDay();
+                    $day->displayDay();
                     $day_of_month += 1;
                 }
                 else
                 {
-                    echo '<div class="day col-md-1"></div>';
+                    $day->displayPlaceholder();
                 }
             }
             echo '<div class="col-md-3"></div></div>';

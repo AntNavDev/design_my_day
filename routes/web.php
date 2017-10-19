@@ -17,7 +17,7 @@ Route::get('/', function () {
     return view('home.index');
 })->name( 'home' );
 
-Route::get( '/calendar/{calendar}', 'CalendarController@newcal' )->name( 'newcal' );
+Route::get( '/calendar/{calendar}/{year}', 'CalendarController@changeMonth' )->name( 'changeMonth' );
 
 Auth::routes();
 

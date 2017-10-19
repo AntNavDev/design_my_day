@@ -42,4 +42,9 @@ class Day extends Model
         echo $this->getName() . '<br>';
         echo '</div>';
     }
+
+    public function displayPlaceholder()
+    {
+        echo '<div class="hide_day col-md-1"></div>';
+    }
 }
