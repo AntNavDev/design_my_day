@@ -17,7 +17,7 @@
                 </div>
             </div>
             <div class="row">
-                <label for="days_tasks">Tasks for <span id="viewed_day"></span>:</label>
+                <label for="days_tasks"><span id="viewed_day"></span></label>
                     <div id="days_tasks">
                     </div>
             </div>

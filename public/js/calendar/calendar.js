@@ -1,9 +1,16 @@
 jQuery( document ).ready( function() {
-    var selected_day = $( '.today' );
+    var selected_day = $( document ).find( '.today' )[ 0 ];
     $( selected_day ).animate( { height: 180, width: 180 }, 400 );
     $( '#selected_date' ).attr( 'value', $( selected_day ).find( 'input[name="my_date"]' ).val() );
 
-    $( '#viewed_day' ).html( $(selected_day).find( 'span[name="my_day_of_week"]' ).text() + ' the ' +  appendSuffix( $(selected_day).find( 'span[name="my_day_number"]' ).text() ) );
+    if( selected_day )
+    {
+        $( '#viewed_day' ).html( 'Tasks for ' + $( selected_day ).find( 'span[name="my_day_of_week"]' ).text() + ' the ' +  appendSuffix( $( selected_day ).find( 'span[name="my_day_number"]' ).text() ) + ':' );
+    }
+    else
+    {
+        $( '#viewed_day' ).html( 'No Day Selected' );
+    }
 
     $( selected_day ).find( 'ul[name="task_list"]' ).children().each( function( index, element ) {
         $( '#days_tasks' ).append( '<a href="">&times;</a> ' + $( element ).text() + '<br>' );
@@ -17,7 +24,7 @@ jQuery( document ).ready( function() {
             $( selected_day ).animate( { height: 150, width: 150 }, 400 );
         }
 
-        $( '#viewed_day' ).html( $(this).find( 'span[name="my_day_of_week"]' ).text() + ' the ' +  appendSuffix( $(this).find( 'span[name="my_day_number"]' ).text() ) );
+        $( '#viewed_day' ).html( 'Tasks for ' + $( this ).find( 'span[name="my_day_of_week"]' ).text() + ' the ' +  appendSuffix( $( this ).find( 'span[name="my_day_number"]' ).text() ) + ':' );
 
         $(this).find( 'ul[name="task_list"]' ).children().each( function() {
             $( '#days_tasks' ).append( '<a href="">&times;</a> ' + $( this ).text() + '<br>' );
