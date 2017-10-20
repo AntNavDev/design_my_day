@@ -1,3 +1,6 @@
+#days_tasks {
+    border: 1px solid #00FF00;
+}
 #task_info {
     position: relative;
     top: 100px;
@@ -8,3 +11,4 @@ textarea {
     width: 300px;
     resize: none;
 }
+

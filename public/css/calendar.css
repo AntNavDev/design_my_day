@@ -3,6 +3,10 @@
     margin: 10px;
     border: 1px solid #000000;
     width: 150px;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .hide_day {
     height: 150px;
@@ -20,12 +24,13 @@
     font-size: 28px;
     text-align: center;
 }
-ul {
+.day ul {
     padding-left: 0;
     list-style-position: inside;
+    position: relative;
+    list-style: none;
 }
 .day li {
-    display: block;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
