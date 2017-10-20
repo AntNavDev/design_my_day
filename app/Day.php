@@ -81,8 +81,8 @@ class Day extends Model
         
         echo '<div class="' . $classes_for_day . '">';
         echo '<input type="hidden" name="my_date" value="' . $fulldate . '">';
-        echo $this->getNumber() . '<br>';
-        echo $this->getName() . '<br>';
+        echo '<span name="my_day_number">' . $this->getNumber() . '</span><br>';
+        echo '<span name="my_day_of_week">' . $this->getName() . '</span><br>';
         echo '<span class="day_message">' . $this->getMessage() . '</span><br>';
         echo '<ul name="task_list">';
         if( isset( $tasks ) )

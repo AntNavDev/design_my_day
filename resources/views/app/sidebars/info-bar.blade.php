@@ -7,7 +7,8 @@
         <div id="task_info" class="row">
             <div class="row">
                 <div class="col-md-12">
-                    <textarea id="task_description" name="task_description"></textarea>
+                    <label for="task_description">Entry for a new task:</label>
+                        <textarea id="task_description" name="task_description"></textarea>
                 </div>
             </div>
             <div class="row">
@@ -16,8 +17,9 @@
                 </div>
             </div>
             <div class="row">
-                <div id="days_tasks">
-                </div>
+                <label for="days_tasks">Tasks for <span id="viewed_day"></span>:</label>
+                    <div id="days_tasks">
+                    </div>
             </div>
         </div>
     </form>

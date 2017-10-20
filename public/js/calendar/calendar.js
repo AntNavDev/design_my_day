@@ -3,7 +3,9 @@ jQuery( document ).ready( function() {
     $( selected_day ).animate( { height: 180, width: 180 }, 400 );
     $( '#selected_date' ).attr( 'value', $( selected_day ).find( 'input[name="my_date"]' ).val() );
 
-    $(selected_day).find( 'ul[name="task_list"]' ).children().each( function( index, element ) {
+    $( '#viewed_day' ).html( $(selected_day).find( 'span[name="my_day_of_week"]' ).text() + ' the ' +  appendSuffix( $(selected_day).find( 'span[name="my_day_number"]' ).text() ) );
+
+    $( selected_day ).find( 'ul[name="task_list"]' ).children().each( function( index, element ) {
         $( '#days_tasks' ).append( '<a href="">&times;</a> ' + $( element ).text() + '<br>' );
     } );
 
@@ -15,6 +17,8 @@ jQuery( document ).ready( function() {
             $( selected_day ).animate( { height: 150, width: 150 }, 400 );
         }
 
+        $( '#viewed_day' ).html( $(this).find( 'span[name="my_day_of_week"]' ).text() + ' the ' +  appendSuffix( $(this).find( 'span[name="my_day_number"]' ).text() ) );
+
         $(this).find( 'ul[name="task_list"]' ).children().each( function() {
             $( '#days_tasks' ).append( '<a href="">&times;</a> ' + $( this ).text() + '<br>' );
         } );
@@ -24,3 +28,32 @@ jQuery( document ).ready( function() {
     } );
 
 } );
+
+function appendSuffix( num )
+{
+    var ret = num;
+    // Used 10 and 20 as loose constraints to easily understand what code is doing. (If you're not one to read comments)
+    // First if is used for all numbers not ending in 1, 2 or 3. This does NOT include 11, 12, 13
+    //Second if gets all numbers ending with 1, 2, or 3
+    if( ( num.substr(-1) > 3 || num.substr(-1) == 0 ) || ( num > 10 && num < 20 ) )
+    {
+        ret += 'th';
+    }
+    else if( ( ( num > 0 && num < 10 ) || num > 20 ) )
+    {
+        if( num.substr(-1) == 1 )
+        {
+            ret += 'st';
+        }
+        else if( num.substr(-1) == 2 )
+        {
+            ret += 'nd';
+        }
+        else if( num.substr(-1) == 3 )
+        {
+            ret += 'rd';
+        }
+    }
+
+    return ret;
+}
