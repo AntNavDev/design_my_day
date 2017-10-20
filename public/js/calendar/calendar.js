@@ -33,8 +33,8 @@ function appendSuffix( num )
 {
     var ret = num;
     // Used 10 and 20 as loose constraints to easily understand what code is doing. (If you're not one to read comments)
-    // First if is used for all numbers not ending in 1, 2 or 3. This does NOT include 11, 12, 13
-    //Second if gets all numbers ending with 1, 2, or 3
+    // First if is used to grab all numbers not ending in 1, 2 or 3. This does NOT include 11, 12, 13
+    // Second if appends all numbers ending with 1, 2, or 3 with the appropriate suffix
     if( ( num.substr(-1) > 3 || num.substr(-1) == 0 ) || ( num > 10 && num < 20 ) )
     {
         ret += 'th';
