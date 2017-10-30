@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Task;
+use App\User;
+use App\Notifications\CalendarUpdated;
 use Illuminate\Http\Request;
 
 class TaskController extends Controller
@@ -42,6 +44,9 @@ class TaskController extends Controller
         ]);
 
         $new_task->save();
+
+        $user = User::find( $request[ 'user_id' ] );
+        $user->notify( new CalendarUpdated('test') );
 
         return redirect()->back();
     }
