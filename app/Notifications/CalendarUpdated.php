@@ -9,18 +9,17 @@ use Illuminate\Notifications\Messages\MailMessage;
 
 class CalendarUpdated extends Notification implements ShouldQueue
 {
-    protected $cu_message;
     use Queueable;
+    protected $cu_task = '';
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct( $message )
+    public function __construct( $task )
     {
-        $this->cu_message = $message;
-        return $message;
+        $this->cu_task = $task;
     }
 
     /**
@@ -43,9 +42,12 @@ class CalendarUpdated extends Notification implements ShouldQueue
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+                    ->subject( 'A task has been saved!' )
+                    ->greeting( 'Hello from Design Your Day!' )
+                    ->line( 'This email is designed to let you know that the following task was saved to you user account.\n' )
+                    ->line( $this->cu_task )
+                    ->action( '\nCheck out Design Your Day', url( '/' ) )
+                    ->line( 'Thank you for letting us help you Design your day!' );
     }
 
     /**

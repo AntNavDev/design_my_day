@@ -43,10 +43,11 @@ class TaskController extends Controller
             'scheduled_date' => $request[ 'my_date' ]
         ]);
 
-        $new_task->save();
-
-        $user = User::find( $request[ 'user_id' ] );
-        $user->notify( new CalendarUpdated('test') );
+        if( $new_task->save() )
+        {
+            $user = User::find( $request[ 'user_id' ] );
+            $user->notify( new CalendarUpdated( $request[ 'task_description' ] ) );
+        }
 
         return redirect()->back();
     }
