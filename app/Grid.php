@@ -7,22 +7,22 @@ use Illuminate\Database\Eloquent\Model;
 
 class Grid extends Model
 {
-    private $g_length = 0;
+    private $g_height = 0;
     private $g_width = 0;
     private $g_start_point = 0;
     private $g_size = 0;
 
-    public function __construct( $length = 0, $width = 0, $start_point = 0, $size = 0 )
+    public function __construct( $height = 0, $width = 0, $start_point = 0, $size = 0 )
     {
-        $this->g_length = $length;
+        $this->g_height = $height;
         $this->g_width = $width;
         $this->g_start_point = $start_point;
         $this->g_size = $size;
     }
 
-    public function setLength( $length = 0 )
+    public function setHeight( $height = 0 )
     {
-        $this->g_length = $length;
+        $this->g_height = $height;
     }
 
     public function setWidth( $width = 0 )
@@ -40,9 +40,9 @@ class Grid extends Model
         $this->g_size = $size;
     }
 
-    public function getLength()
+    public function getHeight()
     {
-        return $this->g_length;
+        return $this->g_height;
     }
 
     public function getWidth()
@@ -79,7 +79,7 @@ class Grid extends Model
         $start_display = false;
         $month_size = $this->getSize();
 
-        for( $outer_index = 0; $outer_index < $this->getLength(); $outer_index++ )
+        for( $outer_index = 0; $outer_index < $this->getHeight(); $outer_index++ )
         {
             echo '<div class="row"><div class="col-md-2"></div>';
             for( $inner_index = 0; $inner_index < $this->getWidth(); $inner_index++ )
