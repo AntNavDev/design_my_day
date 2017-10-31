@@ -78,6 +78,7 @@ class Grid extends Model
         $day_of_month = 1;
         $start_display = false;
         $month_size = $this->getSize();
+        $grid_size = 0;
 
         for( $outer_index = 0; $outer_index < $this->getHeight(); $outer_index++ )
         {
@@ -96,10 +97,20 @@ class Grid extends Model
 
                     $classes = [];
 
-                    if( array_key_exists( ( $day_of_month . $displayed_month ), $day->daysOfSignificance() ) )
+                    $day_of_week_integer = $grid_size % 7;
+                    $week_of_month = ( $grid_size - $day_of_week_integer ) / 7;
+
+                    // Add static holidays
+                    if( array_key_exists( ( $day_of_month . $displayed_month ), $day->staticHolidays() ) )
                     {
-                        $day->setMessage( $day->daysOfSignificance()[ ( $day_of_month . $displayed_month ) ] );
+                        $day->setMessage( $day->staticHolidays()[ ( $day_of_month . $displayed_month ) ] );
                     }
+                    // Add dynamic holidays
+                    if( array_key_exists( ( $day_of_week_integer . $week_of_month . $displayed_month), $day->dynamicHolidays() ) )
+                    {
+                        $day->setMessage( $day->dynamicHolidays()[ ( $day_of_week_integer . $week_of_month . $displayed_month ) ] );   
+                    }
+                    // Add indicator for current day
                     if( $displayed_fulldate == date( 'jmY' ) )
                     {
                         $classes[] = 'today';
@@ -112,6 +123,7 @@ class Grid extends Model
                 {
                     $day->displayPlaceholder();
                 }
+                $grid_size++;
             }
             echo '<div class="col-md-3"></div></div>';
         }

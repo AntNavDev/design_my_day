@@ -55,7 +55,7 @@ class Day extends Model
         return $this->d_messages;
     }
 
-    public function daysOfSignificance()
+    public function staticHolidays()
     {
         return array(
             '101'  => 'New Year\'s Day',
@@ -64,8 +64,14 @@ class Day extends Model
             '104'  => 'April Fools Day',
             '407'  => 'Independence Day',
             '3110' => 'Halloween',
-            '2311' => 'Thanksgiving',
             '2512' => 'Christmas'
+        );
+    }
+
+    public function dynamicHolidays()
+    {
+        return array(
+            '4311' => 'Thanksgiving'
         );
     }
 

@@ -3,8 +3,6 @@
         <link href="{{ asset( 'css/sidebars/info-bar.css' ) }}" rel="stylesheet">
         <form action="{{ route( 'task.store' ) }}" method="POST">
             {{ csrf_field() }}
-            {{-- {{ dd(get_defined_vars()) }} --}}
-            {{-- {{ dd( $my_calendar ) }} --}}
             @if( isset( $viewed_month ) )
                 <input type="hidden" name="viewed_year" value="{{ $viewed_month->getYear() }}">
                 <input type="hidden" name="increment" value="{{ $increment }}">
