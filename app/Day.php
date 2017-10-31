@@ -10,13 +10,19 @@ class Day extends Model
 {
     private $d_name = '';
     private $d_number = 0;
-    private $d_message = '';
+    private $d_messages = [];
 
-    public function __construct( $name = 'no_name', $number = 0, $message = '' )
+    public function __construct( $name = 'no_name', $number = 0, $messages = [] )
     {
         $this->d_name = $name;
         $this->d_number = $number;
-        $this->d_message = $message;
+        if( isset( $messages ) )
+        {
+            foreach( $messages as $message )
+            {
+                $this->d_messages[] = $message;
+            }
+        }
     }
 
     public function setName( $name )
@@ -29,9 +35,9 @@ class Day extends Model
         $this->d_number = $number;
     }
 
-    public function setMessage( $message )
+    public function setMessage( $messages )
     {
-        $this->d_message = $message;
+        $this->d_messages[] = $messages;
     }
 
     public function getName()
@@ -44,9 +50,9 @@ class Day extends Model
         return $this->d_number;
     }
 
-    public function getMessage()
+    public function getMessages()
     {
-        return $this->d_message;
+        return $this->d_messages;
     }
 
     public function daysOfSignificance()
@@ -76,20 +82,30 @@ class Day extends Model
 
         if( Auth::user() )
         {
-            $tasks = Task::where( 'scheduled_date', $fulldate )->where( 'user_id', Auth::user()->getId() )->pluck( 'description' );
+            $tasks = Task::where( 'scheduled_date', '=', $fulldate )->where( 'user_id', '=', Auth::user()->getId() )->get();
         }
         
         echo '<div class="' . $classes_for_day . '">';
         echo '<input type="hidden" name="my_date" value="' . $fulldate . '">';
         echo '<span name="my_day_number">' . $this->getNumber() . '</span><br>';
         echo '<span name="my_day_of_week">' . $this->getName() . '</span><br>';
-        echo '<span class="day_message">' . $this->getMessage() . '</span><br>';
+
+        $messages = $this->getMessages();
+        if( isset( $messages ) )
+        {
+            foreach( $messages as $message )
+            {
+                echo '<span class="day_message">' . $message . '</span><br>';
+            }
+        }
         echo '<ul name="task_list">';
+
         if( isset( $tasks ) )
         {
             foreach( $tasks as $task )
             {
-                echo '<li>' . $task . '</li>';
+                echo '<div class="task_info"><input type="hidden" name="task_id" value="' . $task->getId() . '">';
+                echo '<li name="task_description">' . $task->getDescription() . '</li></div>';
             }
         }
         echo '</ul>';

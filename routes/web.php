@@ -20,6 +20,8 @@ Route::get('/', function () {
 
 Route::get( '/calendar/{calendar}/{year}', 'CalendarController@changeMonth' )->name( 'changeMonth' );
 
+Route::post( '/delete-task', 'TaskController@deleteTask' );
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

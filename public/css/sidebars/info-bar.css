@@ -11,4 +11,7 @@ textarea {
     width: 300px;
     resize: none;
 }
-
+.delete_task {
+    background-color: transparent;
+    border: none;
+}

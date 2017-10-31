@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ config( 'app.locale' ) }}">
+<meta name="csrf-token" content="{{ csrf_token() }}">
 <!-- Bootstrap -->
 <link href="{{ asset( 'css/app.css' ) }}" rel="stylesheet">
 @yield( 'css' )

@@ -49,7 +49,7 @@ class TaskController extends Controller
             $user->notify( new CalendarUpdated( $request[ 'task_description' ] ) );
         }
 
-        return redirect()->back();
+        return redirect()->back(); // <~~~ change to route later, back() seems like the easy way out of routes...
     }
 
     /**
@@ -95,5 +95,12 @@ class TaskController extends Controller
     public function destroy(Task $task)
     {
         //
+    }
+
+    public function deleteTask( Request $request )
+    {
+        $task = Task::find( $request->id );
+
+        $task->delete();
     }
 }

@@ -16,6 +16,16 @@ class Task extends Model
         'user_id', 'description', 'scheduled_date',
     ];
 
+    public function getId()
+    {
+        return $this->id;   
+    }
+
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
     function user()
     {
         return $this->belongsTo( 'App\User' );

@@ -17,9 +17,10 @@
                 </div>
             </div>
             <div class="row">
+                
                 <label for="days_tasks"><span id="viewed_day"></span></label>
-                    <div id="days_tasks">
-                    </div>
+                <div id="days_tasks"></div>
+                
             </div>
         </div>
     </form>
