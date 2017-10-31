@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Task;
 use App\User;
+use App\Grid;
+use App\Month;
 use App\Notifications\CalendarUpdated;
 use Illuminate\Http\Request;
 
@@ -37,6 +39,9 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
+        $increment = $request[ 'increment' ];
+        $year = $request[ 'viewed_year' ];
+
         $new_task = Task::create([
             'user_id' => $request[ 'user_id' ],
             'description' => $request[ 'task_description' ],
@@ -47,9 +52,14 @@ class TaskController extends Controller
         {
             $user = User::find( $request[ 'user_id' ] );
             $user->notify( new CalendarUpdated( $request[ 'task_description' ] ) );
+            $request->session()->flash( 'success', 'Task added successfully!' );
+        }
+        else
+        {
+            $request->session()->flash( 'failure', 'Something went wrong. Please try again.' );   
         }
 
-        return redirect()->back(); // <~~~ change to route later, back() seems like the easy way out of routes...
+        return redirect()->route( 'changeMonth', compact( 'increment', 'year' ) );
     }
 
     /**
@@ -101,6 +111,13 @@ class TaskController extends Controller
     {
         $task = Task::find( $request->id );
 
-        $task->delete();
+        if( $task->delete() )
+        {
+            $request->session()->flash( 'success', 'Task deleted successfully!' );
+        }
+        else
+        {
+            $request->session()->flash( 'failure', 'Something went wrong. Please try again.' );
+        }
     }
 }

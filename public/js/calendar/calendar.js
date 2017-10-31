@@ -1,5 +1,12 @@
 jQuery( document ).ready( function() {
     var selected_day = $( document ).find( '.today' )[ 0 ];
+    
+    if( selected_day == null )
+    {
+        var placeholder = $( document ).find( 'input[name="my_date"]' )[ 0 ];
+        selected_day = $( placeholder ).parent();
+    }
+
     $( selected_day ).animate( { height: 180, width: 180 }, 400 );
     $( '#selected_date' ).attr( 'value', $( selected_day ).find( 'input[name="my_date"]' ).val() );
 
@@ -54,8 +61,10 @@ jQuery( document ).ready( function() {
             data: {
                 id: $( this ).parent().find( 'input[name="task_id"]' ).val()
             }
-        });
-    } );
+        }); // End of ajax call
+    } ); // End of delete_task on click
+
+    $( 'div.alert' ).delay( 2000 ).slideUp( 300 );
 
 } ); // End of jQuery.( document ).ready();
 

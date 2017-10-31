@@ -14,6 +14,7 @@
         </div>
 
         <div id="main_content" class="col-md-8">
+            @include( 'app.error-message' )
             @yield( 'content' )
             @include( 'app.include' )
         </div>
