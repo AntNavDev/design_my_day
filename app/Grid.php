@@ -79,6 +79,8 @@ class Grid extends Model
         $start_display = false;
         $month_size = $this->getSize();
         $grid_size = 0;
+        // This will indicate what days of the week were skipped before the calendar was started
+        $omitted_days = [];
 
         for( $outer_index = 0; $outer_index < $this->getHeight(); $outer_index++ )
         {
@@ -90,6 +92,13 @@ class Grid extends Model
                 {
                     $start_display = true;
                 }
+                else
+                {
+                    if( ! $start_display )
+                    {
+                        $omitted_days[] = $grid_size;
+                    }
+                }
                 
                 if( ( $day_of_month <= $month_size ) && $start_display )
                 {
@@ -99,6 +108,13 @@ class Grid extends Model
 
                     $day_of_week_integer = $grid_size % 7;
                     $week_of_month = ( $grid_size - $day_of_week_integer ) / 7;
+                    // If the day of the week is in the omitted days, we subtract one to indicate that 
+                    // X day of the month wasn't counted when it wasn't supposed to be.
+                    // (examples of the problem would be 4th Thursday in Novemeber)
+                    if( in_array( $day_of_week_integer, $omitted_days ) )
+                    {
+                        $week_of_month -= 1;
+                    }
 
                     // Add static holidays
                     if( array_key_exists( ( $day_of_month . $displayed_month ), $day->staticHolidays() ) )
@@ -106,7 +122,7 @@ class Grid extends Model
                         $day->setMessage( $day->staticHolidays()[ ( $day_of_month . $displayed_month ) ] );
                     }
                     // Add dynamic holidays
-                    if( array_key_exists( ( $day_of_week_integer . $week_of_month . $displayed_month), $day->dynamicHolidays() ) )
+                    if( array_key_exists( ( $day_of_week_integer . $week_of_month . $displayed_month ), $day->dynamicHolidays() ) )
                     {
                         $day->setMessage( $day->dynamicHolidays()[ ( $day_of_week_integer . $week_of_month . $displayed_month ) ] );   
                     }

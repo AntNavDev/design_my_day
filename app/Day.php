@@ -55,6 +55,13 @@ class Day extends Model
         return $this->d_messages;
     }
 
+    /*
+     * Keys are designed in the format daymonth
+     * With 0 being omitted in the day but kept
+     * in the month; 
+     * ex. 101 = 1, 01 (day one of month one)
+     * ex. 1402 = 14, 02 (day fourteen of month two)
+     */
     public function staticHolidays()
     {
         return array(
@@ -68,6 +75,11 @@ class Day extends Model
         );
     }
 
+    /*
+     * !! UNDER CONSTRUCTION !!
+     * Day of week 0~6, X day of month(2nd thursday, 3rd tuesday, etc) 0~5, month 1~12
+     * !! NEW FEATURE THAT SEEMS TO BE WORKING !!
+     */
     public function dynamicHolidays()
     {
         return array(
