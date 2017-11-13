@@ -66,6 +66,12 @@ jQuery( document ).ready( function() {
 
     $( 'div.alert' ).delay( 2000 ).slideUp( 300 );
 
+    // Probably wont need because we're using routes rather than jQuery
+    $( '.view_type' ).on( 'click', function() {
+        $( this ).parent().find( '.selected' ).removeClass( 'selected' );
+        $( this ).addClass( 'selected' );
+    } );
+
 } ); // End of jQuery.( document ).ready();
 
 function appendSuffix( num )

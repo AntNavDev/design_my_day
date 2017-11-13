@@ -38,3 +38,22 @@
 .day li:before {
     content: '\2022 ';
 }
+ .view_type {
+    border: 1px solid #C2C4BF;
+    background-color: #E0E3DD;
+    text-align: center;
+    border-radius: 5%;
+    width: 80px;
+    margin: 10px 5px;
+ }
+ .selected {
+    background-color: #EBED0A
+ }
+ .view_type_container {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+ }
+.view_type:hover {
+    cursor: pointer;
+}

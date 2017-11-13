@@ -73,7 +73,7 @@ class Grid extends Model
         );
     }
 
-    public function displayGrid( $displayed_month, $displayed_year )
+    public function displayGrid( $displayed_month = 0, $displayed_year = 0, $week_display = false )
     {
         $day_of_month = 1;
         $start_display = false;
@@ -88,9 +88,20 @@ class Grid extends Model
             for( $inner_index = 0; $inner_index < $this->getWidth(); $inner_index++ )
             {
                 $day = new Day( $this->getWeekday()[ $inner_index ], $day_of_month );
+
                 if( $inner_index == $this->getStartPoint() )
                 {
-                    $start_display = true;
+                    if( $week_display )
+                    {
+                        if( $outer_index == 1 )
+                        {
+                            $start_display = true;
+                        }
+                    }
+                    else
+                    {
+                        $start_display = true;
+                    }
                 }
                 else
                 {
