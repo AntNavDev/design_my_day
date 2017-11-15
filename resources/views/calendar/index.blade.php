@@ -12,7 +12,7 @@
         <div class="row">
             <div class="col-md-offset-4 col-md-4 title">
                 <a href="{{ route( 'changeMonth', [ ( $increment - 1 ), $viewed_month->getYear() ] ) }}" class="btn btn-primary">Previous Month</a>
-                {{ $viewed_month->getMonthAsText() }}, {{ $viewed_month->getYear() }}
+                <span id="month_name">{{ $viewed_month->getMonthAsText() }}</span>, {{ $viewed_month->getYear() }}
                 <a href="{{ route( 'changeMonth', [ ( $increment + 1 ), $viewed_month->getYear() ] ) }}" class="btn btn-primary">Next Month</a>
             </div>
             <div class="col-md-4">
@@ -23,7 +23,11 @@
                 </div>
             </div>
         </div>
-        {{ $my_calendar->displayGrid( $viewed_month->getMonth(), $viewed_month->getYear() ) }}
+        <div id="calendar_body" class="row">
+            <div class="col-md-offset-1 col-md-11">
+                {{ $my_calendar->displayGrid( $viewed_month->getMonth(), $viewed_month->getYear() ) }}
+            </div>
+        </div>
     </div>
 @endsection
 

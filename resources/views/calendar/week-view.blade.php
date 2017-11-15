@@ -12,7 +12,8 @@
         <div class="row">
             <div class="col-md-offset-4 col-md-4 title">
                 {{-- <a href="{{ route( 'changeMonth', [ ( $increment - 1 ), $viewed_month->getYear() ] ) }}" class="btn btn-primary">Previous Week</a>
-                
+MAYBE PUT IN CHANGE WEEK HERE?
+SHOULD BE SIMILAR LOGIC TO CHANGING MONTH
                 <a href="{{ route( 'changeMonth', [ ( $increment + 1 ), $viewed_month->getYear() ] ) }}" class="btn btn-primary">Next Week</a> --}}
             </div>
             <div class="col-md-4">
@@ -28,5 +29,5 @@
 @endsection
 
 @section( 'footer' )
-
+    <script type="text/javascript" src="{{ URL::asset( 'js/calendar/week.js' ) }}"></script>
 @endsection

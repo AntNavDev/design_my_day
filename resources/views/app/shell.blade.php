@@ -9,11 +9,11 @@
 </head>
 <body class="container-fluid">
     <div class="row">
-        <div id="profile_sidebar" class="col-md-2">
+        <div id="profile_sidebar" class="col-md-1">
             @include( 'app.sidebars.basic' )
         </div>
 
-        <div id="main_content" class="col-md-8">
+        <div id="main_content" class="col-md-9">
             @include( 'app.error-message' )
             @yield( 'content' )
             @include( 'app.include' )
@@ -24,6 +24,7 @@
                 @include( 'app.sidebars.info-bar' )
             @endauth
         </div>
+        <script type="text/javascript" src="{{ URL::asset( 'js/app.js' ) }}"></script>
         @yield( 'footer' )
     </div>
 
