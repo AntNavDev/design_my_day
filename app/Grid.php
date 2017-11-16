@@ -76,6 +76,8 @@ class Grid extends Model
 
     public function displayWeek( $first_day = 0, $last_day = 0 )
     {
+        // I think this looks ugly, but it works for now
+        // May try and simplify later
         echo '<div class="row">';
         for( $index = 0; $index < 17; $index++ )
         {
@@ -103,7 +105,7 @@ class Grid extends Model
 
         for( $outer_index = 0; $outer_index < $this->getHeight(); $outer_index++ )
         {
-            echo '<div class="row"><div class="col-md-2"></div>';
+            echo '<div class="row calendar_container">';
             for( $inner_index = 0; $inner_index < $this->getWidth(); $inner_index++ )
             {
                 $day = new Day( $this->getWeekday()[ $inner_index ], $day_of_month );
@@ -171,11 +173,15 @@ class Grid extends Model
         for( $outer_index = 0; $outer_index < $this->getHeight(); $outer_index++ )
         {
             echo '<div class="row home_container">';
-            for( $inner_index = 0; $inner_index < $this->getWidth(); $inner_index++ )
+            if( $outer_index > 0 )
             {
-                echo '<a href="' . route(  'changeMonth', [ ( $month_counter + 1 ), date( 'Y' )]  ) . '"><div class="col-md-3 little_month ' . lcfirst( Month::convertMonthToText()[ $month_counter ] ) . '">' . Month::convertMonthToText()[ $month_counter ] . '</div></a>';
-                $month_counter++;
+                for( $inner_index = 0; $inner_index < $this->getWidth(); $inner_index++ )
+                {
+                    echo '<a href="' . route(  'changeMonth', [ ( $month_counter + 1 ), date( 'Y' )]  ) . '"><div class="col-md-3 little_month ' . lcfirst( Month::convertMonthToText()[ $month_counter ] ) . '">' . Month::convertMonthToText()[ $month_counter ] . '</div></a>';
+                    $month_counter++;
+                }
             }
+
             echo '</div>';
         }
     }
