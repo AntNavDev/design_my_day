@@ -122,6 +122,8 @@ class CalendarController extends Controller
 
     public function displayWeek( $first_day, $increment = 1, $year = 0 )
     {
+        // dump( $first_day );
+        // die('deaded');
         $current_month = ( 0 + $increment );
         if( $current_month < 10 )
         {
