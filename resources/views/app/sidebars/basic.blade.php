@@ -1,4 +1,4 @@
-<div>
+<div class="nav_bar">
     <ul>
         <li>
             <a href="/">Home</a>

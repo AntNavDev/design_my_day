@@ -14,9 +14,11 @@
 Route::resource( 'calendar', 'CalendarController' );
 Route::resource( 'task', 'TaskController' );
 
-Route::get('/', function () {
-    return view('home.index');
-})->name( 'home' );
+// Route::get('/', function () {
+//     return view('home.index');
+// })->name( 'home' );
+
+Route::get( '/', 'HomeController@index' )->name( 'home' );
 
 Route::get( '/calendar/displayWeek/{first_day}/{increment}/{year}', 'CalendarController@displayWeek' )->name( 'displayWeek' );
 

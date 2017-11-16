@@ -5,9 +5,6 @@
 @endsection
 
 @section( 'content' )
-    <div>
-        Welcome to {{ config( 'app.name' ) }}!
-    </div>
     <div id="calendar_display">
         @include( 'app.nav-bar' )
         <div id="calendar_body" class="row">

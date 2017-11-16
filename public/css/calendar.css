@@ -7,7 +7,7 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    background-color: #E6E4E1
+    background-color: #E6E4E1;
 }
 .hide_day {
     height: 150px;

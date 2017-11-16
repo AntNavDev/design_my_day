@@ -1,0 +1,16 @@
+.home_background {
+    background-image: url( '../assets/the-four-seasons.jpg' );
+}
+.home_container {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+.little_month {
+    height: 250px;
+    width: 250px;
+    background-color: #E6E4E1;
+    display: inline-block;
+    border: 1px solid #000000;
+    margin: 10px;
+}

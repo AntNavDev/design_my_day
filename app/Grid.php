@@ -155,4 +155,17 @@ class Grid extends Model
             echo '<div class="col-md-3"></div></div>';
         }
     }
+
+    public function displayYear()
+    {
+        for( $outer_index = 0; $outer_index < $this->getHeight(); $outer_index++ )
+        {
+            echo '<div class="row home_container">';
+            for( $inner_index = 0; $inner_index <= $this->getWidth(); $inner_index++ )
+            {
+                echo '<div class="col-md-3 little_month"></div>';
+            }
+            echo '</div>';
+        }
+    }
 }
