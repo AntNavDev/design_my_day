@@ -9,7 +9,7 @@
         @include( 'app.nav-bar' )
         <div id="calendar_body" class="row">
             <div class="col-md-offset-1 col-md-11">
-                {{ $my_calendar->displayGrid( $viewed_month->getMonth(), $viewed_month->getYear() ) }}
+                {{ $my_calendar->displayMonth( $viewed_month->getMonth(), $viewed_month->getYear() ) }}
             </div>
         </div>
     </div>

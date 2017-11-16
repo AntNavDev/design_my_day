@@ -9,7 +9,7 @@
         @include( 'app.nav-bar' )
         <div id="calendar_body" class="row">
             <div class="col-md-offset-1 col-md-11">
-                {{ $my_calendar->displayGrid( 0, 0, true ) }}
+                {{ $my_calendar->displayWeek() }}
             </div>
         </div>
     </div>
