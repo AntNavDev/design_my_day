@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Day;
+use App\Month;
 use Illuminate\Database\Eloquent\Model;
 
 class Grid extends Model
@@ -161,9 +162,9 @@ class Grid extends Model
         for( $outer_index = 0; $outer_index < $this->getHeight(); $outer_index++ )
         {
             echo '<div class="row home_container">';
-            for( $inner_index = 0; $inner_index <= $this->getWidth(); $inner_index++ )
+            for( $inner_index = 0; $inner_index < $this->getWidth(); $inner_index++ )
             {
-                echo '<div class="col-md-3 little_month"></div>';
+                echo '<a href="' . route(  'changeMonth', [( ( $inner_index + 1 ) * ( $outer_index + 1 ) ), date( 'Y' )]  ) . '"><div class="col-md-3 little_month ' . lcfirst( Month::convertMonthToText()[ ( ( $inner_index + 1 ) * ( $outer_index + 1 ) ) - 1 ] ) . '">' . Month::convertMonthToText()[ ( ( $inner_index + 1 ) * ( $outer_index + 1 ) ) - 1 ] . '</div></a>';
             }
             echo '</div>';
         }

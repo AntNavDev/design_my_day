@@ -80,7 +80,7 @@ class Month extends Model
         return $this->convertMonthToText()[ $this->getMonth() - 1 ];
     }
 
-    private function convertMonthToText()
+    public static function convertMonthToText()
     {
         return array(
             'January',

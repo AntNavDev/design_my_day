@@ -15,7 +15,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $year_grid = new Grid( 4, 3, 0, 12 );
+        $year_grid = new Grid( 3, 4, 0, 12 );
 
         return view( 'home.index', compact( 'year_grid' ) );
     }
