@@ -159,12 +159,14 @@ class Grid extends Model
 
     public function displayYear()
     {
+        $month_counter = 0;
         for( $outer_index = 0; $outer_index < $this->getHeight(); $outer_index++ )
         {
             echo '<div class="row home_container">';
             for( $inner_index = 0; $inner_index < $this->getWidth(); $inner_index++ )
             {
-                echo '<a href="' . route(  'changeMonth', [( ( $inner_index + 1 ) * ( $outer_index + 1 ) ), date( 'Y' )]  ) . '"><div class="col-md-3 little_month ' . lcfirst( Month::convertMonthToText()[ ( ( $inner_index + 1 ) * ( $outer_index + 1 ) ) - 1 ] ) . '">' . Month::convertMonthToText()[ ( ( $inner_index + 1 ) * ( $outer_index + 1 ) ) - 1 ] . '</div></a>';
+                echo '<a href="' . route(  'changeMonth', [ ( $month_counter + 1 ), date( 'Y' )]  ) . '"><div class="col-md-3 little_month ' . lcfirst( Month::convertMonthToText()[ $month_counter ] ) . '">' . Month::convertMonthToText()[ $month_counter ] . '</div></a>';
+                $month_counter++;
             }
             echo '</div>';
         }
