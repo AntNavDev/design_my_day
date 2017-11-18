@@ -25,6 +25,7 @@
             @endauth
         </div>
         <script type="text/javascript" src="{{ URL::asset( 'js/app.js' ) }}"></script>
+        <script type="text/javascript" src="{{ URL::asset( 'js/app/nav-bar.js' ) }}"></script>
         @yield( 'footer' )
     </div>
 

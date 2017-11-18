@@ -20,7 +20,7 @@ Route::resource( 'task', 'TaskController' );
 
 Route::get( '/', 'HomeController@index' )->name( 'home' );
 
-Route::get( '/calendar/displayWeek/{first_day}/{increment}/{year}', 'CalendarController@displayWeek' )->name( 'displayWeek' );
+Route::get( '/calendar/displayWeek/{selected_day}/{increment}/{year}', 'CalendarController@displayWeek' )->name( 'displayWeek' );
 
 Route::get( '/calendar/{calendar}/{year}', 'CalendarController@changeMonth' )->name( 'changeMonth' );
 

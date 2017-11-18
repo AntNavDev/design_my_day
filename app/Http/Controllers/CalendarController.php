@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Grid;
 use App\Month;
 use App\Task;
-use App\Week;
 use Illuminate\Http\Request;
 
 class CalendarController extends Controller
@@ -120,10 +119,8 @@ class CalendarController extends Controller
         return view( 'calendar.index', compact( 'my_calendar', 'viewed_month', 'increment' ) );
     }
 
-    public function displayWeek( $first_day, $increment = 1, $year = 0 )
+    public function displayWeek( $selected_day = 0, $increment = 1, $year = 0 )
     {
-        // dump( $first_day );
-        // die('deaded');
         $current_month = ( 0 + $increment );
         if( $current_month < 10 )
         {
@@ -134,6 +131,6 @@ class CalendarController extends Controller
 
         $my_calendar = new Grid( 2, 7, 0, 7 );
 
-        return view( 'calendar.week-view', compact( 'my_calendar', 'viewed_month', 'increment' ) );
+        return view( 'calendar.week-view', compact( 'my_calendar', 'viewed_month', 'increment', 'selected_day' ) );
     }
 }

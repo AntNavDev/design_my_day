@@ -8,6 +8,7 @@ jQuery( document ).ready( function() {
     }
 
     $( selected_day ).animate( { height: 180, width: 180 }, 400 );
+    $( selected_day ).addClass( 'current_selection' );
     $( '#selected_date' ).attr( 'value', $( selected_day ).find( 'input[name="my_date"]' ).val() );
 
     if( selected_day )
@@ -24,12 +25,14 @@ jQuery( document ).ready( function() {
     } );
 
     $( '.day' ).on( 'click', function() {
+        $( '.current_selection' ).removeClass( 'current_selection' );
         $( '#selected_date' ).val( $(this).find( 'input[name="my_date"]' ).val() );
         $( '#days_tasks' ).html( '' );
         if( selected_day )
         {
             $( selected_day ).animate( { height: 150, width: 150 }, 400 );
         }
+        
 
         $( '#viewed_day' ).html( 'Tasks for ' + $( this ).find( 'span[name="my_day_of_week"]' ).text() + ' the ' +  appendSuffix( $( this ).find( 'span[name="my_day_number"]' ).text() ) + ':' );
 
@@ -39,6 +42,7 @@ jQuery( document ).ready( function() {
         
         selected_day = this;
         $( this ).animate( { height: 180, width: 180 }, 400 );
+        $( this ).addClass( 'current_selection' );
     } ); // End of on-click for .day class
 
     $( '#days_tasks' ).on( 'click', '.delete_task', function() {

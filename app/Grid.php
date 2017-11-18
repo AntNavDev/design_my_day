@@ -77,18 +77,22 @@ class Grid extends Model
     public function displayWeek( $first_day = 0, $last_day = 0 )
     {
         // I think this looks ugly, but it works for now
-        // May try and simplify later
+        // May try and rework later
+        $day_name_int = 0;
         echo '<div class="row">';
         for( $index = 0; $index < 17; $index++ )
         {
-            $day = new Day();
-            if( $index < 10 )
+            $day = new Day( $this->getWeekday()[ $day_name_int ], ( $first_day + $day_name_int ) );
+            $condition = ( $index < 10 ) || ( ( $first_day + $day_name_int ) < 1 );
+            dump( $condition );
+            if( $condition )// ( $index < 10 ) || ( ( $first_day + $day_name_int ) < 1 ) )
             {
                 $day->displayPlaceholder();
             }
             else
             {
                 $day->displayDay();
+                $day_name_int++;
             }
         }
         echo '</div>';
@@ -173,13 +177,11 @@ class Grid extends Model
         for( $outer_index = 0; $outer_index < $this->getHeight(); $outer_index++ )
         {
             echo '<div class="row home_container">';
-            if( $outer_index > 0 )
+            
+            for( $inner_index = 0; $inner_index < $this->getWidth(); $inner_index++ )
             {
-                for( $inner_index = 0; $inner_index < $this->getWidth(); $inner_index++ )
-                {
-                    echo '<a href="' . route(  'changeMonth', [ ( $month_counter + 1 ), date( 'Y' )]  ) . '"><div class="col-md-3 little_month ' . lcfirst( Month::convertMonthToText()[ $month_counter ] ) . '">' . Month::convertMonthToText()[ $month_counter ] . '</div></a>';
-                    $month_counter++;
-                }
+                echo '<a href="' . route(  'changeMonth', [ ( $month_counter + 1 ), date( 'Y' )]  ) . '"><div class="col-md-3 little_month ' . lcfirst( Month::convertMonthToText()[ $month_counter ] ) . '">' . Month::convertMonthToText()[ $month_counter ] . '</div></a>';
+                $month_counter++;
             }
 
             echo '</div>';
