@@ -43,11 +43,10 @@ class CalendarUpdated extends Notification implements ShouldQueue
     {
         return (new MailMessage)
                     ->subject( 'A task has been saved!' )
-                    ->greeting( 'Hello from Design My Day!' )
-                    ->line( 'This email is designed to let you know that the following task was saved to you user account.' )
+                    ->greeting( 'Hello from ' . config( 'app.name' ) . '!' )
+                    ->line( 'This email is designed to let you know that the following task was saved to your user account.' )
                     ->line( $this->cu_task )
-                    ->action( 'Check out Design My Day at ', url( '/' ) )
-                    ->line( 'Thank you for letting us help you Design your day!' );
+                    ->action( 'Check out ' . config( 'app.name' ) . ' here!', url( '/' ) );
     }
 
     /**

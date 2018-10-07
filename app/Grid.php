@@ -158,6 +158,17 @@ class Grid extends Model
                         $classes[] = 'today';
                         $day->setMessage( 'Today' );
                     }
+
+                    // Add Day odd/even classes
+                    if( $inner_index % 2 == 0 )
+                    {
+                        $classes[] = 'day_even';
+                    }
+                    else
+                    {
+                        $classes[] = 'day_odd';
+                    }
+
                     $day->displayDay( $classes, $displayed_fulldate );
                     $day_of_month += 1;
                 }
@@ -180,7 +191,13 @@ class Grid extends Model
             
             for( $inner_index = 0; $inner_index < $this->getWidth(); $inner_index++ )
             {
-                echo '<a href="' . route(  'changeMonth', [ ( $month_counter + 1 ), date( 'Y' )]  ) . '"><div class="col-md-3 little_month ' . lcfirst( Month::convertMonthToText()[ $month_counter ] ) . '">' . Month::convertMonthToText()[ $month_counter ] . '</div></a>';
+                echo '<a href="' . route(  'changeMonth', [ ( $month_counter + 1 ), date( 'Y' )]  ) . '">';
+                echo '<div class="col-md-3 little_month ' . lcfirst( Month::convertMonthToText()[ $month_counter ] ) . '">';
+                echo '<div class="row"><div class="col-md-12 month_name">' . Month::convertMonthToText()[ $month_counter ] . '</div></div>';
+                echo '</div>';
+                echo '</a>';
+                
+                
                 $month_counter++;
             }
 

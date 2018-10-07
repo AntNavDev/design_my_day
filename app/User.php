@@ -34,6 +34,6 @@ class User extends Authenticatable
 
     function tasks()
     {
-        return $this->hasMany( 'App\ArtProject' );
+        return $this->hasMany( 'App\Task' );
     }
 }

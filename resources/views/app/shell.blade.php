@@ -14,18 +14,20 @@
 </head>
 <body class="container-fluid">
     <div class="row">
-        @include( 'app.nav-bar' )
+        <div class="col-md-12">
+            @include( 'app.nav-bar' )
+        </div>
     </div>
 
     <div class="row">
 
-        <div id="main_content" class="col-md-9">
+        <div id="main_content" class="col-md-offset-1 col-md-9">
             @include( 'app.error-message' )
             @yield( 'content' )
             @include( 'app.include' )
         </div>
 
-        <div class="col-md-3">
+        <div class="col-md-2">
             @auth
                 @include( 'app.sidebars.info-bar' )
             @endauth
