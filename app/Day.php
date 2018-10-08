@@ -77,7 +77,7 @@ class Day extends Model
 
     /*
      * !! UNDER CONSTRUCTION !!
-     * Day of week 0~6, X day of month(2nd thursday, 3rd tuesday, etc) 0~5, month 1~12
+     * Day of week 0~6, X week of month 0~5, month 1~12
      * !! NEW FEATURE THAT SEEMS TO BE WORKING !!
      */
     public function dynamicHolidays()

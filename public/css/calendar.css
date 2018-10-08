@@ -9,20 +9,11 @@
     text-overflow: ellipsis;
     color: rgb(29, 29, 29)
 }
-.day_even {
-    background-color: rgba(182, 182, 229, 0.75);
-}
-.day_odd {
-    background-color: rgba(177, 226, 188, 0.75);
-}
 .hide_day {
     height: 150px;
     width: 150px;
     border: 0px solid #000000;
     margin: 10px;   
-}
-.today {
-    background-color: #FFFD96;
 }
 .day_message {
     font-weight: bold;
@@ -64,4 +55,88 @@
     display:flex;
     justify-content:center;
     align-items:center;
+}
+.january_day_even {
+    background-color: rgba(107, 107, 119, 0.75);
+    color: #FFFFFF;
+}
+.january_day_odd {
+    background-color: rgba(255, 255, 255, 0.75);
+}
+.february_day_even {
+    background-color: rgba(255, 103, 222, 0.75);
+    color: #FFFFFF;
+}
+.february_day_odd {
+    background-color: rgba(255, 96, 96, 0.75);
+    color: #FFFFFF;
+}
+.march_day_even {
+    background-color: rgba(205, 233, 45, 0.75);
+}
+.march_day_odd {
+    background-color: rgba(104, 163, 81, 0.75);
+}
+.april_day_even {
+    background-color: rgba(75, 75, 99, 0.75);
+    color: #FFFFFF;
+}
+.april_day_odd {
+    background-color: rgba(59, 92, 58, 0.75);
+    color: #FFFFFF;
+}
+.may_day_even {
+    background-color: rgba(21, 199, 89, 0.75);
+}
+.may_day_odd {
+    background-color: rgba(185, 7, 60, 0.75);
+}
+.june_day_even {
+    background-color: rgba(52, 195, 214, 0.75);
+}
+.june_day_odd {
+    background-color: rgba(24, 204, 180, 0.75);
+}
+.july_day_even {
+    background-color: rgba(255, 0, 0, 0.75);
+    color: #FFFFFF;
+}
+.july_day_odd {
+    background-color: rgba(0, 0, 255, 0.75);
+    color: #FFFFFF;
+}
+.august_day_even {
+    background-color: rgba(207, 206, 114, 0.75);
+}
+.august_day_odd {
+    background-color: rgba(80, 141, 56, 0.75);
+}
+.september_day_even {
+    background-color: rgba(168, 41, 41, 0.75);
+}
+.september_day_odd {
+    background-color: rgba(207, 131, 17, 0.75);
+}
+.october_day_even {
+    background-color: rgba(19, 19, 24, 0.75);
+    color: #FFFFFF;
+}
+.october_day_odd {
+    background-color: rgba(252, 142, 69, 0.75);
+}
+.november_day_even {
+    background-color: rgba(253, 242, 83, 0.75);
+}
+.november_day_odd {
+    background-color: rgba(112, 50, 0, 0.75);
+    color: #FFFFFF;
+}
+.december_day_even {
+    background-color: rgba(204, 59, 59, 0.75);
+}
+.december_day_odd {
+    background-color: rgba(255, 255, 255, 0.75);
+}
+.today {
+    background-color: #FFFD96;
 }

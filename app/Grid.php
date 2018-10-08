@@ -152,6 +152,13 @@ class Grid extends Model
                     {
                         $day->setMessage( $day->dynamicHolidays()[ ( $day_of_week_integer . $week_of_month . $displayed_month ) ] );   
                     }
+                    
+                    // date_default_timezone_set('America/Los_Angeles');
+                    
+                    $current_month = strtolower( Month::convertMonthToText()[ $displayed_month - 1 ] );
+                    // echo $current_month;
+                    // die("with me");
+                    
                     // Add indicator for current day
                     if( $displayed_fulldate == date( 'jmY' ) )
                     {
@@ -162,11 +169,11 @@ class Grid extends Model
                     // Add Day odd/even classes
                     if( $inner_index % 2 == 0 )
                     {
-                        $classes[] = 'day_even';
+                        $classes[] = $current_month . '_day_even';
                     }
                     else
                     {
-                        $classes[] = 'day_odd';
+                        $classes[] = $current_month . '_day_odd';
                     }
 
                     $day->displayDay( $classes, $displayed_fulldate );
