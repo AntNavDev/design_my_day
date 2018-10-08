@@ -153,12 +153,8 @@ class Grid extends Model
                         $day->setMessage( $day->dynamicHolidays()[ ( $day_of_week_integer . $week_of_month . $displayed_month ) ] );   
                     }
                     
-                    // date_default_timezone_set('America/Los_Angeles');
-                    
-                    $current_month = strtolower( Month::convertMonthToText()[ $displayed_month - 1 ] );
-                    // echo $current_month;
-                    // die("with me");
-                    
+                    // TODO: Check date against a user determined timezone and not whatever 'date()' is
+
                     // Add indicator for current day
                     if( $displayed_fulldate == date( 'jmY' ) )
                     {
@@ -167,7 +163,9 @@ class Grid extends Model
                     }
 
                     // Add Day odd/even classes
-                    if( $inner_index % 2 == 0 )
+                    $current_month = strtolower( Month::convertMonthToText()[ $displayed_month - 1 ] );
+                    
+                    if( $day_of_month % 2 == 0 )
                     {
                         $classes[] = $current_month . '_day_even';
                     }
